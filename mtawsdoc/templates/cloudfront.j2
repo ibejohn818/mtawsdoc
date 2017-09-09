@@ -1,0 +1,25 @@
+<ol>
+	{% for site in sites %}
+	<li><strong>Domain: </strong>{{ site.domain }}
+		<ul>
+			<li><strong>cnames:</strong>
+				<ul>
+					{% for cn in site.domains %}
+					<li>{{ cn }}</li>
+					{% endfor %}
+				</ul>
+			</li>
+			<li> <strong>Origins:</strong>
+					{% for og in site.origins %}
+					<li style='list-style:none;'>
+						<ul>
+							<li><strong>Host:</strong> {{ og[0] }}</li>
+							<li><strong>Protocol: </strong> {{ og[1] }}</li>
+						</ul>
+					</li>
+					{% endfor %}
+			</li>
+		</ul>
+	</li>
+	{% endfor %}
+</ol>
