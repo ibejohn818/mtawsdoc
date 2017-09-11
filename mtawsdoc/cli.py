@@ -29,6 +29,16 @@ def cloudfront():
 
     click.echo(template)
 
+@main.command()
+def codedeploy():
+
+    ah = AwsHelper()
+    t = Template()
+    cd = ah.codedeploy()
+
+    template = t.load("codedeploy-list.md.j2", apps=cd)
+
+    click.echo(template)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,11 @@
+{% for app in apps %}
+-{{ app.app }}
+    -__Groups:__
+    {% for group in app.groups %}
+        -{{ group }}
+    {% else %}
+        -__**No Groups Configured**__
+    {% endfor %}
+{% else %}
+    __**No Codedeploy Apps Configured**__
+{% endfor %}

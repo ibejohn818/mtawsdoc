@@ -84,6 +84,33 @@ class AwsHelper(object):
         return sites
 
 
+    def codedeploy(self):
+
+        cd_apps = []
+        client = self.client("codedeploy")
+        # get applications
+        apps = client.list_applications()
+
+        if not apps.get('applications'):
+            return cd_apps
+
+        for app in apps['applications']:
+
+            groupsGet = client.list_deployment_groups(applicationName=app)
+
+            try:
+                groups = jmespath.search("deploymentGroups", groupsGet)
+            except:
+                groups = []
+
+            cd_apps.append({
+                'app': app,
+                'groups': groups
+                })
+
+        return cd_apps
+
+
 class Template(object):
 
     def __init__(self):
