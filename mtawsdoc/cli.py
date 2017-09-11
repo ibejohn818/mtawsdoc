@@ -25,7 +25,7 @@ def cloudfront():
     t = Template()
     cf = ah.cloudfront()
 
-    template = t.load("cloudfront.j2", sites=cf)
+    template = t.load("cloudfront.md.j2", sites=cf)
 
     click.echo(template)
 

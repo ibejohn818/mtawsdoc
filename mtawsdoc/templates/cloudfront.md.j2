@@ -1,0 +1,12 @@
+{% for site in sites %}
+{{ loop.index}}. __Domain:__ {{ site.domain }}
+	- __cnames:__
+	{% for cn in site.domains %}
+		- {{ cn }}
+	{% endfor %}
+	- __origins:__
+	{% for og in site.origins %}
+		- __Host:__ {{ og[0] }}
+			- __Protocol:__ {{ og[1] }}
+	{% endfor %}
+{% endfor %}
